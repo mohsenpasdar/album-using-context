@@ -1,0 +1,14 @@
+.card {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  border: 5px double $dark-blue;
+}
+
+
+.card__body {
+  color: $dark-blue;
+  text-decoration: none;
+  text-align: center;
+  font-weight: bold;
+}
