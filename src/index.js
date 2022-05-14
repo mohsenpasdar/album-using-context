@@ -6,14 +6,14 @@ import configureStore from './store/configureStore';
 import AppRouter from './routers/AppRouter'
 import 'normalize.css/normalize.css';
 import './styles/styles.scss'
-
+import NotesContext, {contextState} from './context/albums-context'
 
 const store = configureStore();
 
 const jsx = (
-  <Provider store={store}>
+  <NotesContext.Provider value={contextState}>
     <AppRouter />
-  </Provider>
+  </NotesContext.Provider>
 );
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
