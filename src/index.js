@@ -1,24 +1,27 @@
-import React from 'react';
+import React, {useReducer} from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
-import { Provider } from 'react-redux';
-import configureStore from './store/configureStore';
 import AppRouter from './routers/AppRouter'
 import 'normalize.css/normalize.css';
 import './styles/styles.scss'
-import NotesContext, {contextState} from './context/albums-context'
+import AlbumsContext from './context/albums-context'
+import albumsReducer from './reducers/album'
 
-const store = configureStore();
 
-const jsx = (
-  <NotesContext.Provider value={contextState}>
-    <AppRouter />
-  </NotesContext.Provider>
-);
+const Jsx = () => {
+  const [contextState, dispatch] = useReducer(albumsReducer, {albumId: 15})
+
+  return (
+    <AlbumsContext.Provider value={{contextState, dispatch}}>
+      <AppRouter />
+    </AlbumsContext.Provider>
+  )
+};
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {jsx}
+    <Jsx />
   </React.StrictMode>
 );
 

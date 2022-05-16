@@ -1,5 +1,3 @@
-import React, {useReducer} from 'react'
-
 const albumsReducer = (state, action) => {
   switch (action.type) {
     case "GET_ID":

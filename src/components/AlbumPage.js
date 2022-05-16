@@ -1,14 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { connect } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import LoadingPage from './LoadingPage';
 import AlbumsContext from '../context/albums-context'
-// import { useParams, useNavigate } from "react-router-dom";
 
 const AlbumPage = () => {
-  const { albumId } = useContext(AlbumsContext)
-  // const params = useParams();
-  // const id = parseInt(params.id);
+  const { contextState } = useContext(AlbumsContext)
+  const albumId = contextState.albumId
   const id = albumId
   const [state, setState] = useState({
     album: [],
@@ -53,6 +50,5 @@ const AlbumPage = () => {
     </div>
   )
 }
-
 
 export default AlbumPage
